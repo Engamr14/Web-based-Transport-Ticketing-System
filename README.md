@@ -41,11 +41,12 @@ Plus two cloud logistic services:
 Service Discovery allows a microservice to discover and reach other microservices.
 
 I have used the Eureka Service Discovery provided by Spring Cloud and Netflix, where all services automatically register themselves with Eureka server at startup.
-
+![image](https://user-images.githubusercontent.com/101885589/182261788-a5a08a2a-a54b-4e50-8723-a1f5649378e9.png)
 ### API Gateway
 API Gateway uses routes to forward requests and responses to the destination services. It can apply filtering and modify requests and responses passing through it.
 
 We used the API Gateway provided by Spring Cloud.
+![image](https://user-images.githubusercontent.com/101885589/182261928-8ff6121d-1151-4051-8aaa-73df66f1707e.png)
 
 ## Microservices in Details
 
@@ -83,7 +84,7 @@ This service is responsible for managing payments. It collects Payment Requests 
 All communications take place asynchronously by means of Apache Kafka.
 
 ## System Overview
-
+![image](https://user-images.githubusercontent.com/101885589/182262091-eeb95031-1bfb-4582-8738-6c906a9c84e1.png)
 
 ## Possible Usage Scenario
 Overall, possible usages of the system include:
@@ -105,6 +106,7 @@ Overall, possible usages of the system include:
 7. The Traveler can check the status of the Order at any moment.
 8. The Payment Outcome is forwarded to the Ticket Catalogue.
 9. If everything went smoothly, the Tickets are added to the Travelers’ tickets
+![image](https://user-images.githubusercontent.com/101885589/182262139-66fc2c50-def6-44cd-a9cf-7a4eebdf28e7.png)
 
 ### Ticket validation (by QR Code Reader)
 1. The QR Code Reader authenticates at boot.
@@ -112,3 +114,4 @@ Overall, possible usages of the system include:
 3. The QR Code is decoded into the JWS of a Ticket.
 4. The QR Code Reader asks the Traveler Service whether the JWS of the ticket exists and is still valid
 5. If the Ticket is valid, the QR Code Reader signals the gates to open , else the gates remain closed
+![image](https://user-images.githubusercontent.com/101885589/182262181-a45fdd2a-3e90-40bb-98d0-056827cfde0a.png)

@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: land-gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: authService
+          uri: lb://LAND-AUTHENTICATION-SERVICE
+          predicates:
+            - Path=/auth/**
+          filters:
+            - RewritePath=/auth/(?<path>.*), /$\{path}
+        - id: catalogueService
+          uri: lb://LAND-TICKET-CATALOGUE-SERVICE
+          predicates:
+            - Path=/catalogue/**
+          filters:
+            - RewritePath=/catalogue/(?<path>.*), /$\{path}
+        - id: travelerService
+          uri: lb://LAND-TRAVELER-SERVICE
+          predicates:
+            - Path=/traveler/**
+          filters:
+            - RewritePath=/traveler/(?<path>.*), /$\{path}
+        - id: paymentService
+          uri: lb://LAND-PAYMENT-SERVICE
+          predicates:
+            - Path=/payment/**
+          filters:
+            - RewritePath=/payment/(?<path>.*), /$\{path}
+server:
+  port: 8080
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
